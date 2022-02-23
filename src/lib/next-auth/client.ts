@@ -2,23 +2,23 @@ import { Account, User } from '@prisma/client';
 import { Awaitable } from './types';
 
 export interface AdapterUser extends User {
-	id: string;
-	emailVerified: Date | null;
+  id: string;
+  emailVerified: Date | null;
 }
 
 export interface AdapterSession {
-	id: string;
-	/** A randomly generated value that is used to get hold of the session. */
-	sessionToken: string;
-	/** Used to connect the session to a particular user */
-	userId: string;
-	expires: Date;
+  id: string;
+  /** A randomly generated value that is used to get hold of the session. */
+  sessionToken: string;
+  /** Used to connect the session to a particular user */
+  userId: string;
+  expires: Date;
 }
 
 export interface VerificationToken {
-	identifier: string;
-	expires: Date;
-	token: string;
+  identifier: string;
+  expires: Date;
+  token: string;
 }
 
 /**
@@ -57,54 +57,37 @@ export interface VerificationToken {
  * [Create a custom adapter](https://next-auth.js.org/tutorials/creating-a-database-adapter)
  */
 export interface Adapter {
-	createUser: (user: Omit<AdapterUser, 'id'>) => Awaitable<AdapterUser>;
-	getUser: (id: string) => Awaitable<AdapterUser | null>;
-	getUserByEmail: (email: string) => Awaitable<AdapterUser | null>;
-	/** Using the provider id and the id of the user for a specific account, get the user. */
-	getUserByAccount: (
-		providerAccountId: Pick<Account, 'provider' | 'providerAccountId'>
-	) => Awaitable<AdapterUser | null>;
-	updateUser: (user: Partial<AdapterUser>) => Awaitable<AdapterUser>;
-	/** @todo Implement */
-	deleteUser?: (
-		userId: string
-	) => Promise<void> | Awaitable<AdapterUser | null | undefined>;
-	linkAccount: (
-		account: Account
-	) => Promise<void> | Awaitable<Account | null | undefined>;
-	/** @todo Implement */
-	unlinkAccount?: (
-		providerAccountId: Pick<Account, 'provider' | 'providerAccountId'>
-	) => Promise<void> | Awaitable<Account | undefined>;
-	/** Creates a session for the user and returns it. */
-	createSession: (session: {
-		sessionToken: string;
-		userId: string;
-		expires: Date;
-	}) => Awaitable<AdapterSession>;
-	getSessionAndUser: (
-		sessionToken: string
-	) => Awaitable<{ session: AdapterSession; user: AdapterUser } | null>;
-	updateSession: (
-		session: Partial<AdapterSession> & Pick<AdapterSession, 'sessionToken'>
-	) => Awaitable<AdapterSession | null | undefined>;
-	/**
-	 * Deletes a session from the database.
-	 * It is preferred that this method also returns the session
-	 * that is being deleted for logging purposes.
-	 */
-	deleteSession: (
-		sessionToken: string
-	) => Promise<void> | Awaitable<AdapterSession | null | undefined>;
-	createVerificationToken?: (
-		verificationToken: VerificationToken
-	) => Awaitable<VerificationToken | null | undefined>;
-	/**
-	 * Return verification token from the database
-	 * and delete it so it cannot be used again.
-	 */
-	useVerificationToken?: (params: {
-		identifier: string;
-		token: string;
-	}) => Awaitable<VerificationToken | null>;
+  createUser: (user: Omit<AdapterUser, 'id'>) => Awaitable<AdapterUser>;
+  getUser: (id: string) => Awaitable<AdapterUser | null>;
+  getUserByEmail: (email: string) => Awaitable<AdapterUser | null>;
+  /** Using the provider id and the id of the user for a specific account, get the user. */
+  getUserByAccount: (
+    providerAccountId: Pick<Account, 'provider' | 'providerAccountId'>,
+  ) => Awaitable<AdapterUser | null>;
+  updateUser: (user: Partial<AdapterUser>) => Awaitable<AdapterUser>;
+  /** @todo Implement */
+  deleteUser?: (userId: string) => Promise<void> | Awaitable<AdapterUser | null | undefined>;
+  linkAccount: (account: Account) => Promise<void> | Awaitable<Account | null | undefined>;
+  /** @todo Implement */
+  unlinkAccount?: (
+    providerAccountId: Pick<Account, 'provider' | 'providerAccountId'>,
+  ) => Promise<void> | Awaitable<Account | undefined>;
+  /** Creates a session for the user and returns it. */
+  createSession: (session: { sessionToken: string; userId: string; expires: Date }) => Awaitable<AdapterSession>;
+  getSessionAndUser: (sessionToken: string) => Awaitable<{ session: AdapterSession; user: AdapterUser } | null>;
+  updateSession: (
+    session: Partial<AdapterSession> & Pick<AdapterSession, 'sessionToken'>,
+  ) => Awaitable<AdapterSession | null | undefined>;
+  /**
+   * Deletes a session from the database.
+   * It is preferred that this method also returns the session
+   * that is being deleted for logging purposes.
+   */
+  deleteSession: (sessionToken: string) => Promise<void> | Awaitable<AdapterSession | null | undefined>;
+  createVerificationToken?: (verificationToken: VerificationToken) => Awaitable<VerificationToken | null | undefined>;
+  /**
+   * Return verification token from the database
+   * and delete it so it cannot be used again.
+   */
+  useVerificationToken?: (params: { identifier: string; token: string }) => Awaitable<VerificationToken | null>;
 }

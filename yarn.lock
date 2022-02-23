@@ -225,7 +225,7 @@
   resolved "https://registry.npmjs.org/@types/prop-types/-/prop-types-15.7.4.tgz"
   integrity sha512-rZ5drC/jWjrArrS8BR6SIr4cWpW09RNTYt9AMZo3Jwwif+iacXAqgVjm0B0Bv/S1jhDXKHqRVNCbACkJ89RAnQ==
 
-"@types/react@17.0.39":
+"@types/react@*", "@types/react@17.0.39":
   version "17.0.39"
   resolved "https://registry.npmjs.org/@types/react/-/react-17.0.39.tgz"
   integrity sha512-UVavlfAxDd/AgAacMa60Azl7ygyQNRwC/DsHZmKgNvPmRR5p70AJ5Q9EAmL2NWOJmeV+vVUI4IAP7GZrN8h8Ug==
@@ -238,6 +238,28 @@
   version "0.16.2"
   resolved "https://registry.npmjs.org/@types/scheduler/-/scheduler-0.16.2.tgz"
   integrity sha512-hppQEBDmlwhFAXKJX2KnWLYu5yMfi91yazPb2l+lbJiwW+wdo1gNeRA+3RgNSO39WYX2euey41KEwnqesU2Jew==
+
+"@types/styletron-engine-atomic@^1.1.1":
+  version "1.1.1"
+  resolved "https://registry.yarnpkg.com/@types/styletron-engine-atomic/-/styletron-engine-atomic-1.1.1.tgz#032dabd5ccea1b8601521ad38616a7a9f0af5404"
+  integrity sha512-Jthl51uLiVZHkY0HRBGtDOjjtI4H0nYaERZtzzdDgnJSa+PqQG55ScMQPmSAu6ikzYWp6+jJbbtuIX+TqVfFeg==
+  dependencies:
+    "@types/styletron-standard" "*"
+
+"@types/styletron-react@^5.0.3":
+  version "5.0.3"
+  resolved "https://registry.yarnpkg.com/@types/styletron-react/-/styletron-react-5.0.3.tgz#54d6e9acefb692355b35132b9f5276cc5cac00f6"
+  integrity sha512-mNM8WrFrCYWXNxudjdMMeHZmGdXLfVF/fQmj1Qnz7E99niL2d7IcQubbx731FX3YEVGoF9Au1J6uBkPoEzqypw==
+  dependencies:
+    "@types/react" "*"
+    "@types/styletron-standard" "*"
+
+"@types/styletron-standard@*", "@types/styletron-standard@^2.0.2":
+  version "2.0.2"
+  resolved "https://registry.yarnpkg.com/@types/styletron-standard/-/styletron-standard-2.0.2.tgz#1e4f1977555e0b4612af0f5f420e8c777640b124"
+  integrity sha512-ZpPB8k2Yhskq/oggg2wjWeP/bBxRDfwIzRrHbdksVOQXfHOLf4rRqs2tlWLK/NRJvWU3E3MlXeNcoVSZjuAPiQ==
+  dependencies:
+    csstype "^3.0.2"
 
 "@typescript-eslint/eslint-plugin@^5.12.0":
   version "5.12.0"
@@ -1062,6 +1084,11 @@ eslint-module-utils@^2.7.2:
   dependencies:
     debug "^3.2.7"
     find-up "^2.1.0"
+
+eslint-plugin-baseui@^10.9.0:
+  version "10.9.0"
+  resolved "https://registry.yarnpkg.com/eslint-plugin-baseui/-/eslint-plugin-baseui-10.9.0.tgz#101fba8820f2e73e0782317320a4eb10767a6958"
+  integrity sha512-fLqyjBdYlgF1/xU/iNoXp3utTXOLEp2VkPIEylTyW2yYX1wCSrD/6gepN7XiNAj2t5qtWO6hsU86eyhw9Lnywg==
 
 eslint-plugin-import@^2.25.2, eslint-plugin-import@^2.25.4:
   version "2.25.4"
