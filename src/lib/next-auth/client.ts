@@ -1,7 +1,7 @@
-import { Account, User } from '@prisma/client';
 import { Awaitable } from './types';
+// import { Account, User } from '@prisma/client';
 
-export interface AdapterUser extends User {
+export interface AdapterUser /* extends User */ {
   id: string;
   emailVerified: Date | null;
 }
@@ -62,16 +62,16 @@ export interface Adapter {
   getUserByEmail: (email: string) => Awaitable<AdapterUser | null>;
   /** Using the provider id and the id of the user for a specific account, get the user. */
   getUserByAccount: (
-    providerAccountId: Pick<Account, 'provider' | 'providerAccountId'>,
+    providerAccountId: Pick</* Account */ any, 'provider' | 'providerAccountId'>,
   ) => Awaitable<AdapterUser | null>;
   updateUser: (user: Partial<AdapterUser>) => Awaitable<AdapterUser>;
   /** @todo Implement */
   deleteUser?: (userId: string) => Promise<void> | Awaitable<AdapterUser | null | undefined>;
-  linkAccount: (account: Account) => Promise<void> | Awaitable<Account | null | undefined>;
+  linkAccount: (account: any /* Account */) => Promise<void> | Awaitable</* Account */ any | null | undefined>;
   /** @todo Implement */
   unlinkAccount?: (
-    providerAccountId: Pick<Account, 'provider' | 'providerAccountId'>,
-  ) => Promise<void> | Awaitable<Account | undefined>;
+    providerAccountId: Pick<any /* Account */, 'provider' | 'providerAccountId'>,
+  ) => Promise<void> | Awaitable</* Account */ any | undefined>;
   /** Creates a session for the user and returns it. */
   createSession: (session: { sessionToken: string; userId: string; expires: Date }) => Awaitable<AdapterSession>;
   getSessionAndUser: (sessionToken: string) => Awaitable<{ session: AdapterSession; user: AdapterUser } | null>;
