@@ -1,10 +1,10 @@
 import * as React from 'react';
 import {
-    ALIGN,
-    HeaderNavigation,
-    StyledNavigationItem,
-    StyledNavigationList
-    } from 'baseui/header-navigation';
+  ALIGN,
+  HeaderNavigation,
+  StyledNavigationItem,
+  StyledNavigationList
+  } from 'baseui/header-navigation';
 import { Button } from 'baseui/button';
 import { StyledLink } from 'baseui/link';
 

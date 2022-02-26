@@ -1,13 +1,13 @@
 import React, { ReactElement } from 'react';
 import { MainLayout } from '../components/MainLayout/MainLayout';
 
-const browse = () => {
-  return <div>browse</div>;
+const play = () => {
+  return <div>players</div>;
 };
 
-export default browse;
+export default play;
 
-browse.getLayout = function getLayout(page: ReactElement) {
+play.getLayout = function getLayout(page: ReactElement) {
   return (
     <MainLayout>
       <>{page}</>
